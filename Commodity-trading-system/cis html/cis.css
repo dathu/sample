@@ -1,0 +1,57 @@
+.content01 {
+	font-family: Verdana;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: normal;
+	color: #333366;
+	padding-right: 5px;
+	padding-left: 10px;
+	line-height: 16px;
+
+
+}
+.sidehead01 {
+	font-family: Verdana;
+	font-size: 11px;
+	font-style: normal;
+	line-height: 16px;
+	font-weight: bold;
+	color: #4995EA;
+}
+.readmore {
+	color : #000000;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	margin-bottom : 0px;
+	margin-left : 5px;
+	margin-right : 5px;
+	font-size : 12px;
+	font-family : Arial;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+
+}
+
+.readmore:a {
+	color : #000000;
+	font-size : 12px;
+	font-family : Arial;
+	font-weight: bold;
+	text-align: center;
+}
+.readmore:hover {
+	color : #694717;
+	font-size : 12px;
+	font-family : Arial;
+	font-weight: bold;
+	text-align: center;
+}
+.footer {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding-left: 10px;
+}

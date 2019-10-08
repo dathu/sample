@@ -1,0 +1,183 @@
+
+
+Create Database cis
+
+use cis
+
+Create table Loc_Mast
+(
+LocID bigint primary key,
+Loc_TypeID int,
+StateID smallint ,
+DistID smallint,
+MandID int,
+VilID int,
+Name1 varchar(30),
+Pin	varchar(10)	
+)
+
+Create table Comm_Mast
+(
+CommID bigint primary key,
+Comm_Div_TypeID int,
+CatID smallint ,
+NameID smallint,
+TypeID int,
+GradeID int,
+Name1 varchar(30)
+)
+
+create table City_Mast
+(
+CityID bigint primary key,
+Name1 varchar(50)
+)
+
+create table Info_Supplier
+(
+Infosup_id int primary key,
+Name1 varchar(25),
+Dob DateTime,
+Addr varchar(50),
+City varchar(30),
+Pin_Code varchar(10),
+Phone varchar(15),
+Cell varchar(20),
+Fax varchar(15),
+Email varchar(40),
+Age int,
+Mother_Tongue varchar(15),
+Occupation varchar(20),
+Biz_Category varchar(15),
+Joining_Dt DateTime,
+Qualif varchar(15),
+Payment bigint,
+End_Dt DateTime
+)
+
+
+
+create table Market_Mast
+(
+MarketID int primary key,
+Name1 varchar(30),
+Address1 varchar(30),
+Pin varchar(10),
+Amc varchar(3),
+Computerized varchar(3),
+Phone1 varchar(20),
+Phone2 varchar(20),
+Fax1 varchar(20),
+Fax2 varchar(20),
+Email varchar(30),
+LocID bigint  
+)
+
+
+create table Cust_Mast
+(
+Cust_id bigint primary key,
+Name1 varchar(25),
+Addr varchar(50),
+City varchar(20),
+Pin varchar(10),
+Phone varchar(18),
+Cell varchar(25),
+Fax varchar(18),
+Email varchar(30),
+Mother_ton varchar(20),
+DOB DateTime,
+Age int,
+Occupation varchar(25),
+Qualification varchar(20),
+Joining_Dt DateTime,
+Biz_Category varchar(15)
+)
+
+create table UOM_Mast
+(
+MSR_ID int not null,
+MSR_Name varchar(30) not null ,
+MSR_STAN varchar(30) not null,
+MSR_Value int not null,
+constraint PK_UOM primary key(MSR_ID,MSR_Name,MSR_STAN,MSR_Value)
+)
+
+create table COMM_UNIT
+(
+MSR_ID int not null,
+CatID smallint
+)
+
+create table Market_Comm
+(
+CommID bigint,
+MarketID int,
+MRK_COMM_MSR varchar(20)
+)
+
+create table Comm_Price
+(
+CommID int,
+Name1  varchar(30),
+CatID smallint ,
+NameID smallint,
+TypeID int,
+GradeID int,
+UOM  varchar(15),
+Price float,
+Infosup_id int,
+MarketID int,
+Data_Col_Date datetime,
+Data_Col_Time datetime,
+CONSTRAINT PK_COPRI PRIMARY KEY(CommID,Infosup_id,MarketID,
+Data_Col_Date,Data_Col_Time)
+)
+
+create table Login_Form
+(
+Username varchar(25),
+Password1 varchar(25),
+CnfrmPassword varchar(25),
+Status1 varchar(20),
+Flag varchar(10)check([Flag] in ('Yes','No'))
+)
+
+
+
+*** procedure for insert into comm_price table
+
+USE [cis]
+GO
+/****** Object:  StoredProcedure [dbo].[proctprice]    Script Date: 01/28/2008 10:13:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create procedure [dbo].[proctprice]
+(
+@CommID int ,
+@Name1 varchar(30),
+@CatID smallint ,
+@NameID smallint,
+@TypeID int,
+@GradeID int,
+@UOM varchar(15),
+@Price float,
+@Infosup_id int,
+@MarketID int,
+@Data_Col_Date datetime,
+@Data_Col_Time datetime
+)
+as
+begin
+  insert into Comm_Price values(@CommID,@Name1,@CatID,@NameID,@TypeID,@GradeID,@UOM,@Price,@Infosup_id,@MarketID,@Data_Col_Date,@Data_Col_Time)
+end
+
+
+$$$$$$$$$$$  to add admin details
+
+insert into login_form values('future','Point','Point','Administrator','Yes')
+
+
+
